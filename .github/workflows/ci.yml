@@ -39,13 +39,9 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-
-    # services:
-    #  redis:
-    #    image: redis
-    #    ports:
-    #      - 6379:6379
-    #    options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+      RAILS_ENV: test
+      DEVISE_SECRET_KEY: 2218439580cce4b35beb3376ee864399a825764d1fe7c9f92b5c269e184a07b62d68e9183def0b0c85de7aabca3ca8066e65cdb9223996f44ccb6edb73722fae
     steps:
       - name: Install packages
         run: sudo apt-get update && sudo apt-get install --no-install-recommends -y build-essential git pkg-config
@@ -61,13 +57,7 @@ jobs:
 
       - name: Prepare database
         env:
-          RAILS_ENV: test
-          # REDIS_URL: redis://localhost:6379/0
         run: bin/rails db:test:prepare
 
       - name: Run tests
-        env:
-          RAILS_ENV: test
-          DEVISE_SECRET_KEY: 2218439580cce4b35beb3376ee864399a825764d1fe7c9f92b5c269e184a07b62d68e9183def0b0c85de7aabca3ca8066e65cdb9223996f44ccb6edb73722fae
-          # REDIS_URL: redis://localhost:6379/0
         run: bundle exec rspec
