@@ -10,4 +10,10 @@ class RefuelingsController < ApplicationController
       render json: { error: refueling.error }, status: :unprocessable_entity
     end
   end
+
+  private
+
+  def refueling_params
+    params.require(:refueling).permit(:gas_station_id, :user_id, :liters)
+  end
 end
