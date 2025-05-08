@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :gas_stations
+  resources :refuelings, only: [ :create ]
   resources :users, only: [ :index, :show, :create, :update ]
 end

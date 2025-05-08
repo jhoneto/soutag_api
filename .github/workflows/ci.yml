@@ -62,6 +62,7 @@ jobs:
       - name: Prepare database
         env:
           RAILS_ENV: test
+          DEVISE_SECRET_KEY: 2218439580cce4b35beb3376ee864399a825764d1fe7c9f92b5c269e184a07b62d68e9183def0b0c85de7aabca3ca8066e65cdb9223996f44ccb6edb73722fae
           # REDIS_URL: redis://localhost:6379/0
         run: bin/rails db:test:prepare
 

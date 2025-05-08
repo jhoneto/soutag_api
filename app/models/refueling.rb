@@ -1,4 +1,6 @@
 class Refueling < ApplicationRecord
+  DEFAULT_DISCOUNT = 0.05
+
   belongs_to :user
   belongs_to :gas_station
 
