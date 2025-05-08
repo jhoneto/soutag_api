@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_08_175637) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_08_182029) do
+  create_table "gas_stations", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "address", null: false
+    t.decimal "price_per_liter", precision: 10, scale: 2, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.decimal "balance", precision: 10, scale: 2, default: "0.0"
