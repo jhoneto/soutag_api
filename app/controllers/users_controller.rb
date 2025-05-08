@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [ :show, :update ]
+  skip_before_action :authenticate_user!, only: [ :create ]
 
   # GET /users
   def index

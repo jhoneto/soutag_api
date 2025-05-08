@@ -1,24 +1,35 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Getting Started
 
-Things you may want to cover:
+Install Ruby 3.4.1 and Bundler.
 
-* Ruby version
+Create database and run migrations.
 
-* System dependencies
+```
+bundle install
+bundle exec rails db:create
+bundle exec rails db:migrate
+```
 
-* Configuration
+Run the server.
 
-* Database creation
+```
+bundle exec rails server
+```
 
-* Database initialization
+## Seeding
 
-* How to run the test suite
+Create a user and a gas station.
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+bin/rails db:seed
+```
 
-* Deployment instructions
+## Testing
 
-* ...
+Run tests.
+
+```
+bundle exec rspec
+```

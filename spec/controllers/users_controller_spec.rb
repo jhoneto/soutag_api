@@ -52,7 +52,7 @@ RSpec.describe "UsersController", type: :request do
   describe "POST /users" do
     context "when use valid attributes" do
       before do
-        post "/users", params: { user: valid_attributes }.to_json, headers: auth_headers
+        post "/users", params: { user: valid_attributes }
       end
       it "creates a new user with valid attributes" do
         expect(JSON.parse(response.body)["name"]).to eq("Test User")
@@ -65,7 +65,7 @@ RSpec.describe "UsersController", type: :request do
 
     context "when user has invalid attributes" do
       before do
-        post "/users", params: { user: invalid_attributes }.to_json, headers: auth_headers
+        post "/users", params: { user: invalid_attributes }
       end
 
       it "returns an unprocessable entity status for invalid attributes" do
