@@ -10,13 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_08_182029) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_08_182810) do
   create_table "gas_stations", force: :cascade do |t|
     t.string "name", null: false
     t.string "address", null: false
     t.decimal "price_per_liter", precision: 10, scale: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "refuelings", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "gas_station_id", null: false
+    t.decimal "liters", precision: 10, scale: 2, null: false
+    t.decimal "total_cost", precision: 10, scale: 2, null: false
+    t.decimal "discount", precision: 10, scale: 2, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gas_station_id"], name: "index_refuelings_on_gas_station_id"
+    t.index ["user_id"], name: "index_refuelings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,4 +46,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_08_182029) do
     t.index ["jti"], name: "index_users_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "refuelings", "gas_stations"
+  add_foreign_key "refuelings", "users"
 end
